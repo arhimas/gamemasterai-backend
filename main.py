@@ -14,7 +14,7 @@ app = FastAPI()
 SAVES_DIR = "saves"
 
 class ChatRequest(BaseModel):
-    messages: List[Dict]
+    messages: List[Dict]  # [{from, text, type}]
 
 if not os.path.exists(SAVES_DIR):
     os.makedirs(SAVES_DIR)
@@ -25,7 +25,6 @@ LOCAL_LLM_URL = os.getenv("LOCAL_LLM_URL", "http://localhost:8000/predict")
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def llm_chat(messages, max_tokens=100, temperature=0.7):
-    """Envía el historial de mensajes al LLM local o remoto y devuelve la respuesta."""
     if USE_LOCAL:
         resp = httpx.post(
             LOCAL_LLM_URL,
@@ -44,10 +43,39 @@ def llm_chat(messages, max_tokens=100, temperature=0.7):
         )
         return resp.choices[0].message.content
 
+def trim_history(messages, max_turns=15):
+    if len(messages) <= max_turns + 1:
+        return messages
+    return [messages[0]] + messages[-max_turns:]
+
+@app.post("/chat")
+def chat_endpoint(request: ChatRequest):
+    try:
+        # Lógica: recibe el historial completo (chat), añade la respuesta del GM, y devuelve el nuevo historial
+        history = request.messages or []
+        # El último mensaje del usuario:
+        last_user = history[-1]["text"] if history and history[-1]["from"] == "user" else ""
+        # --- Generar respuesta del GM (IA) ---
+        llm_input = []
+        for m in history:
+            # Pasa el historial en formato que OpenAI espera (role/content)
+            role = "user" if m["from"] == "user" else "assistant"
+            llm_input.append({"role": role, "content": m["text"]})
+        # Prompt especial: nunca avances historia, responde solo a lo que pregunta el jugador, etc.
+        respuesta = respuesta_concisa_llm(llm_input)
+        # Añade el mensaje del GM al historial
+        new_messages = history + [
+            {"from": "ai", "text": respuesta, "type": "normal"}
+        ]
+        # Ejemplo: puedes detectar comandos especiales y devolver instrucciones
+        # Aquí podrías analizar si el usuario ha puesto "/start" y responder con instrucciones
+
+        prompt = "Introduce tu próxima acción como jugador. Si necesitas ayuda escribe /ayuda."
+        return {"messages": new_messages, "prompt": prompt}
+    except Exception as e:
+        return {"error": str(e)}
+
 def respuesta_concisa_llm(messages, max_tokens=190, temperature=0.7, reintentos=1):
-    """
-    Llama al LLM y reintenta una vez si la respuesta termina abruptamente.
-    """
     ult = messages[-1]
     if ult["role"] == "user":
         ult_content = (
@@ -66,15 +94,6 @@ def respuesta_concisa_llm(messages, max_tokens=190, temperature=0.7, reintentos=
         cierre = llm_chat(messages, max_tokens=60, temperature=temperature)
         respuesta = respuesta.strip() + " " + cierre.strip()
     return respuesta
-
-@app.post("/chat")
-def chat_endpoint(request: ChatRequest):
-    try:
-        # Usa la función real del Game Master para responder
-        respuesta = respuesta_concisa_llm(request.messages)
-        return {"response": respuesta}
-    except Exception as e:
-        return {"error": str(e)}
 
 @app.get("/")
 def root():
