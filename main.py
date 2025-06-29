@@ -10,6 +10,16 @@ from pydantic import BaseModel
 from typing import List, Dict
 
 app = FastAPI()
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://webapp-rol.vercel.app"],  # tu dominio en Vercel, exactamente así, sin barra final
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 SAVES_DIR = "saves"
 
