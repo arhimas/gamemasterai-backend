@@ -13,11 +13,13 @@ from typing import List, Dict, Optional
 
 
 app = FastAPI()
+
+
 from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://webapp-rol.vercel.app"],  # tu dominio en Vercel, exactamente así, sin barra final
+    allow_origins=["*"],  # O pon la URL de tu frontend si prefieres restringir
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
