@@ -1,0 +1,142 @@
+{
+  "nombre_aventura": "campaña_pathfinder",
+  "rules": {
+    "name": "Pathfinder1.pdf",
+    "attributes": [
+      "fuerza",
+      "destreza",
+      "constitución",
+      "inteligencia",
+      "sabiduría",
+      "carisma"
+    ],
+    "campaign_text": "Cargada desde el PDF Pathfinder1.pdf"
+  },
+  "player_sheet": {
+    "nombreJugador": "Arhimas",
+    "clase": "Mago",
+    "nível": 1,
+    "raced": "Elfo",
+    "alineamiento": "Neutral Bueno",
+    "deidad": "Desna",
+    "tamaño": "Mediano",
+    "sexo": "Masculino",
+    "edad": 110,
+    "altura": "6ft",
+    "peso": "130lbs",
+    "colorDeOjos": "Verde",
+    "colorDeCabello": "Plateado",
+    "colorDePiel": "Pálido",
+    "atributos": {
+      "fuerza": 10,
+      "destreza": 16,
+      "constitución": 10,
+      "inteligencia": 18,
+      "sabiduría": 14,
+      "carisma": 12
+    },
+    "puntosDeVida": 6,
+    "reducMonedas": 0,
+    "habilidades": {
+      "arteDeLaMágia": 4,
+      "conocimiento": 4,
+      "diplomacia": 1,
+      "explorar": 3,
+      "intuición": 2,
+      "luchamanaAMano": 0,
+      "manejarAnimales": 1,
+      "medicina": 2,
+      "mentir": 1,
+      "percibir": 2,
+      "reparar": 3,
+      "sobrevivencia": 2
+    },
+    "equipo": [
+      "Bastón de Mago",
+      "Toga del Sabio",
+      "Poción de Sanación",
+      "Libro de Hechizos"
+    ],
+    "trasfondo": "Criado en los bosques élficos, Arhimas desde joven mostró una afinidad innata para la magia. Esta habilidad le permitió entrar en la academia de magos de su ciudad. Al finalizar sus estudios decidió viajar por el mundo para adquirir más conocimiento y compartir sabiduría."
+  },
+  "npcs": [
+    {
+      "name": "Nestor",
+      "role": "Compañero",
+      "class": "Paladín",
+      "attributes": {
+        "fuerza": 16,
+        "destreza": 12,
+        "constitución": 14,
+        "inteligencia": 10,
+        "sabiduría": 13,
+        "carisma": 15
+      },
+      "history": "Un paladín humano guiado por su fe en Iomedae, busca la justicia en tierras peligrosas."
+    },
+    {
+      "name": "Estoros",
+      "role": "Compañero",
+      "class": "Guerrero",
+      "attributes": {
+        "fuerza": 18,
+        "destreza": 10,
+        "constitución": 16,
+        "inteligencia": 8,
+        "sabiduría": 11,
+        "carisma": 9
+      },
+      "history": "Enano curtido en batalla, protector del pueblo de Harken, siempre lleva su martillo de guerra y su cerveza enana."
+    }
+  ],
+  "messages": [
+    {
+      "role": "system",
+      "content": "Eres el GM usando sistema Pathfinder1.pdf. Gestiona la partida creando escenas, NPCs, monstruos y mapas según las acciones del jugador."
+    },
+    {
+      "role": "user",
+      "content": "{\"player\": {\"nombreJugador\": \"Arhimas\", \"clase\": \"Mago\", \"nivel\": 1, \"raza\": \"Elfo\", \"alineamiento\": \"Neutral Bueno\", \"deidad\": \"Desna\", \"tamaño\": \"Mediano\", \"sexo\": \"Masculino\", \"edad\": 110, \"altura\": \"6ft\", \"peso\": \"130lbs\", \"colorDeOjos\": \"Verde\", \"colorDeCabello\": \"Plateado\", \"colorDePiel\": \"Pálido\", \"atributos\": {\"fuerza\": 10, \"destreza\": 16, \"constitución\": 10, \"inteligencia\": 18, \"sabiduría\": 14, \"carisma\": 12}, \"puntosDeVida\": 6, \"reducMonedas\": 0, \"habilidades\": {\"arteDeLaMágia\": 4, \"conocimiento\": 4, \"diplomacia\": 1, \"explorar\": 3, \"intuición\": 2, \"luchamanaAMano\": 0, \"manejarAnimales\": 1, \"medicina\": 2, \"mentir\": 1, \"percibir\": 2, \"reparar\": 3, \"sobrevivencia\": 2}, \"equipo\": [\"Bastón de Mago\", \"Toga del Sabio\", \"Poción de Sanación\", \"Libro de Hechizos\"], \"trasfondo\": \"Criado en los bosques élficos, Arhimas desde joven mostró una afinidad innata para la magia. Esta habilidad le permitió entrar en la academia de magos de su ciudad. Al finalizar sus estudios decidió viajar por el mundo para adquirir más conocimiento y compartir sabiduría.\"}, \"npcs\": [{\"name\": \"Nestor\", \"role\": \"Compañero\", \"class\": \"Paladín\"}, {\"name\": \"Estoros\", \"role\": \"Compañero\", \"class\": \"Guerrero\"}]}"
+    },
+    {
+      "role": "user",
+      "content": "Inicia la aventura presentando el escenario, el trasfondo del mundo y plantea la primera escena."
+    },
+    {
+      "role": "assistant",
+      "content": "Bienvenidos a Golarion, un mundo de aventura y emoción, de héroes y monstruos, de magia y misterio. Este mundo es hogar de gigantes imperios humanos, ruinas ancestrales, bastos bosques habitados por las eternas razas élficas, y oscuras y profundas montañas donde los enanos forjan sus destinos guiados por el susurro de la piedra. Sin embargo, más allá de la superficial fama y fortuna, multitud de peligros y secretos acechan para aquellos valiente (o locos) lo suficiente para buscarlos.\n\nNuestras historia comienza en el pequeño pueblo de Harken, ubicado en las colinas y bosques del reino de Andoran. A simple vista, Harken parece un lugar tranquilo. Los agricultores trabajan en sus campos, los comerciantes venden sus mercancías y los niños corren por las calles empedradas. Pero estas tranquilas escenas ocultan una creciente tensión. El bosque cercano, anteriormente seguro para los cazadores y recolectores, ahora es escenario de extrañas desapariciones. Rumores de monstruos y espíritus rondan por el pueblo y la gente vive en constante temor.\n\nEntrando a Harken viene nuestro héroe, Arhimas, un mago elfo con una sed insaciable de conocimientos y aventuras. Su viaje por el mundo le ha llevado a este modesto pueblo. A su lado, su nuevo compañero, Nestor, un humano paladín que se guía por su inquebrantable fe en la deidad de la justicia, Iomedae. Nestor espera encontrar en Harken la oportunidad de demostrar su valentía y compromiso con el resguardo de la inocencia.\n\nAmbos llegan a la aldea justo al atardecer, cuando los últimos rayos del día pintan el cielo de colores anaranjados y el aire se llena con el aroma de los hogares preparando la cena. Apenas se adentran en el pueblo, notan el ambiente de tensión. La gente en las calles detiene sus actividades para mirar a los forasteros.\n\nJusto en ese momento, un enano de aspecto robusto llamado Estoros, reconocible por sus icónicas armaduras de guerra enanas y un martillo en la espalda, se acerca a ellos. Con un brillo preocupado en sus ojos y un frasco de cerveza enano en su mano, saluda a los viajeros:\n\n\"Bienvenidos viajeros. Mi nombre es Estoros, uno de los guerreros de este pueblo. Venid, comparto con vosotros una cerveza y algunas preocupaciones.\"\n\nY de esta manera, se planta la semilla de una aventura que ninguno de nuestros héroes olvidará."
+    },
+    {
+      "role": "user",
+      "content": "miro a Nestor y le hago una señal con la cabeza y los hombros preguntándole calladamente qué hacemos?"
+    },
+    {
+      "role": "assistant",
+      "content": "Nestor, con la apariencia tranquila pero firme que caracteriza a un paladín, te mira y asiente, indicándote que sigas a Estoros. Sin mencionar una palabra, se dirige hacia el enano y dice:\n\n\"Buenas tardes, Estoros. No rechazaríamos una buena cerveza y una conversación amistosa después de un largo viaje. Nos interesa saber más sobre las preocupaciones de las que hablas.\"\n\nNestor te mira y con una ligera sonrisa que apenas es perceptible bajo su barba te dice, \"Arhimas, parece que nuestra aventura en Harken va a ser más interesante de lo que esperábamos.\""
+    },
+    {
+      "role": "user",
+      "content": "seguimos a estoros a la taberna"
+    },
+    {
+      "role": "assistant",
+      "content": "Guiados por Estoros, se dirigen a la taberna local, conocida por los lugareños como la \"Jarra de Oro\". A pesar de que el sol recién se pone, el establecimiento ya está lleno de aldeanos buscando refugio de sus preocupaciones en jarras de cerveza y compañía amigable.\n\nEstoros los lleva a través del bullicio, hasta una mesa en una esquina discreta de la taberna. Les hace un gesto para que se sienten, mientras él se dirige a la barra.\n\nDespués de un rápido intercambio con el tabernero, Estoros regresa a la mesa con tres robustas jarras de cerveza oscura. Coloca las jarras en la mesa con un gruñido y se sienta detrás.\n\n\"Lo que pasa es esto,\" comienza, mirándolos seriamente. \"Hace un par de lunas, la gente empezó a desaparecer en el bosque cercano. Algunos dicen que son bestias, otros que son espíritus del bosque, nadie sabe a ciencia cierta. Lo que sí sabemos es que necesitamos ayuda, y nadie mejor que dos aventureros como vosotros para encontrar respuestas.\"\n\nEstoros toma un gran trago de su cerveza y deja la jarra vacía en la mesa con un golpe resonante. Mira a Arhimas y a Nestor con intensidad antes de preguntar, \"¿Estáis dispuestos a ayudarnos?\""
+    },
+    {
+      "role": "user",
+      "content": "miro a Nestor y le pregunto con la mirada"
+    },
+    {
+      "role": "assistant",
+      "content": "Nestor asiente con un gesto firme, indicando su disposición a ayudar."
+    },
+    {
+      "role": "user",
+      "content": "salva partida"
+    },
+    {
+      "role": "assistant",
+      "content": "Nestor asiente con un gesto firme, indicando su disposición a ayudar.\n\n\"Entonces, vayamos allí y averigüemos qué está pasando\", dice Nestor."
+    }
+  ]
+}
