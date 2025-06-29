@@ -5,8 +5,12 @@ import PyPDF2
 from dotenv import load_dotenv
 import openai
 import datetime
+from fastapi import FastAPI
+
 
 SAVES_DIR = "saves"
+
+app = FastAPI()
 
 if not os.path.exists(SAVES_DIR):
     os.makedirs(SAVES_DIR)
